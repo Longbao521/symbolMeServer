@@ -57,6 +57,7 @@ module.exports = {
       return res.json({ status: 200 });
     });
   },
+  // 使用grid-fs读取大文件
   readFile(res) {
     // console.log(gfs)
     gfs.exist({ filename: "deepEarth.mp4" }, function(err, file) {
@@ -73,5 +74,19 @@ module.exports = {
         readstream.pipe(res);
       }
     });
+  },
+  put(model){
+    model.updateMany({
+      "label": "new"
+    },{
+      "label": "old"
+    }, function (err,ret) {
+      if(err) {
+        console.log('更新失败')
+      } else {
+       console.log(ret)
+       console.log('更新成功')
+      }
+    })
   }
 };

@@ -3,7 +3,11 @@
  */
 const mongoose = require('mongoose')
 const skillSchema = new mongoose.Schema({
-    tags: [{
+  label: {
+    type: String,
+    default: 'new',
+  },  
+  tags: [{
         name: String,
         tagType: {
             type: String,
